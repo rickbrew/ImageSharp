@@ -527,8 +527,8 @@ namespace SixLabors.ImageSharp.Processing.Processors.Quantization
                     byte mask = (byte)(1 << shift);
 
                     return ((color.R & mask) >> shift)
-                           | ((color.G & mask) >> (shift - 1))
-                           | ((color.B & mask) >> (shift - 2));
+                           | (((color.G & mask) >> shift) << 1)
+                           | (((color.B & mask) >> shift) << 2);
                 }
 
                 /// <summary>
